@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import Main from "./Main/Main.tsx";
+import Main from "./main/index.tsx";
+import InitUser from './inituser';
 
 const App = function () {
   // 自适应
