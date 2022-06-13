@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { injected, walletconnect, POLLING_INTERVAL } from "../dapp/connectors";
 import { useEagerConnect, useInactiveListener } from "../dapp/hooks";
 import logger from "../logger";
-import { Header } from "./Header";
+import { Header } from "./temp-Header";
 
 function getErrorMessage(error: Error) {
   if (error instanceof NoEthereumProviderError) {

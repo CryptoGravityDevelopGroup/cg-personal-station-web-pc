@@ -1,4 +1,14 @@
 /* ./src/index.css */
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+html,
+body {
+  font-size: 1px;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+#__next {
+  height: 100%;
+}
