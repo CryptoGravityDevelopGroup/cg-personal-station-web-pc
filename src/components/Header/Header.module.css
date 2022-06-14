@@ -2,4 +2,14 @@
   height: 100rem;
   width: 100%;
   background: #ccc;
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  padding: 0 120rem;
+}
+
+.logoImage {
+  width: 200rem;
 }
