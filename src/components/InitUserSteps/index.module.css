@@ -1,11 +1,14 @@
 .initUserSteps {
   height: 72px;
+  width: 688rem;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-bottom: 54rem;
 }
 .steps {
-  height: 24px;
+  height: 24rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,12 +19,12 @@
   line-height: 20px;
   letter-spacing: 0px;
   color: rgba(0, 0, 0, 0.25);
-  margin: 0 12px;
+  margin: 0 12rem;
 }
 .stepsLine {
   display: inline-block;
-  width: 130px;
+  width: 130rem;
   height: 1.1px;
   background: rgba(0, 0, 0, 0.25);
-  margin-right: 12px;
+  margin-right: 12rem;
 }
