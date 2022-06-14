@@ -1,7 +1,6 @@
 .initUserSteps {
-  height: 72px;
   width: 688rem;
-  margin: 0 auto;
+  margin: 24px auto 54px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
