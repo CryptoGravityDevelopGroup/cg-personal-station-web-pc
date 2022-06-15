@@ -36,10 +36,6 @@ export default function Index() {
       img:demo6Pic
     },{
       img:demo7Pic
-    },{
-      img:demo7Pic
-    },{
-      img:demo7Pic
     }
   ]
   const { TextArea } = Input;
@@ -123,35 +119,55 @@ export default function Index() {
               <Input placeholder="Enter your telegram id" suffix={<Image src={telegramPic} alt="telegramPic"/>} />
             </Form.Item>
           </Form>
-        </div>
-      </div>
-      <div className={styles.modal}>
-        <div className={styles.modalTitleWrap}>
-          <span className={styles.title}>请选择头像</span>
-          <Image className={styles.modalClose} src={closePic} alt="close" />
-        </div>
-        <div className={styles.modalContent}>
-          <div className={styles.headerPicWrap}>
-            {
-              headerPicArr.map((item, index) => {
-                return (
-                  <div key={index} className={styles.headerPicItem} onClick={() => {
-                    handleHeaderPicClick(index);
-                  }}>
-                    {/* <Image src={item.img} alt='headerPic' /> */}
-                    {
-                      index == headerPicIndex && <div className={styles.tickWrap}>
-                        <Image src={tickPic} alt='tickPic'/>
-                      </div>
-                    }
-                  </div>
-                )
-              })
-            }
+          <div className={styles.fromBottom}>
+            <div className={'button'} onClick={() => {
+              console.log('Next')
+            }}>Next</div>
           </div>
         </div>
       </div>
-      <div className={styles.modalMask}></div>
+      {
+        isModalVisible && (
+          <>
+            <div className={styles.modal}>
+              <div className={styles.modalTitleWrap}>
+                <span className={styles.title}>请选择头像</span>
+                <Image className={styles.modalClose} src={closePic} alt="close" onClick={() => {
+                  handleOk();
+                }} />
+              </div>
+              <div className={styles.modalContent}>
+                <div className={styles.headerPicWrap}>
+                  {
+                    headerPicArr.map((item, index) => {
+                      return (
+                        <div key={index} className={styles.headerPicItem} onClick={() => {
+                          handleHeaderPicClick(index);
+                        }}>
+                          <Image src={item.img} alt='headerPic' />
+                          {
+                            index == headerPicIndex && <div className={styles.tickWrap}>
+                              <Image src={tickPic} alt='tickPic'/>
+                            </div>
+                          }
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+              </div>
+              <div className={styles.modalBottom}>
+                <div className={'button'} onClick={() => {
+                  handleOk();
+                }}>Ok</div>
+              </div>
+            </div>
+            <div className={styles.modalMask} onClick={() => {
+              handleOk();
+            }}></div>
+          </>
+        )
+      }
     </>
   )
 }
