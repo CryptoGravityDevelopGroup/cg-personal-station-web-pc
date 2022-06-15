@@ -1,3 +1,7 @@
+.wrap {
+  width: 687rem;
+  margin: 0 auto;
+}
 .qaItem {
   width: 687rem;
   padding: 16px;
@@ -5,8 +9,8 @@
   background: #ffffff;
   box-sizing: border-box;
   border: 1px solid #ebeff5;
-  margin: 0 auto;
   position: relative;
+  margin-bottom: 20px;
 }
 .deletBtn {
   position: absolute;
@@ -35,7 +39,7 @@
   background: #ffffff;
   box-sizing: border-box;
   border: 1px dashed #ebeff5;
-  margin: 20px auto;
+  margin: 0 auto 54px;
   cursor: pointer;
 }
 
