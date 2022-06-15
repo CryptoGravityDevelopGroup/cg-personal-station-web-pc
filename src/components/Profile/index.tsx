@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Checkbox, Form, Input, Row, Col, Modal } from 'antd';
+import { Button, Form, Input, Row, Col } from 'antd';
 import "antd/dist/antd.css";
 import styles from './index.module.css';
 import Image from 'next/image';
