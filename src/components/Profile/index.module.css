@@ -16,3 +16,67 @@
   display: flex;
   align-items: center;
 }
+/* 弹窗的样式 */
+.modal {
+  width: 736rem;
+  border-radius: 5px;
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px;
+  z-index: 999;
+}
+.modalTitleWrap {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+.title {
+  font-size: 16px;
+  font-weight: normal;
+  color: #0d0d0d;
+}
+.modalClose {
+  cursor: pointer;
+}
+.modalContent {
+  min-height: 555px;
+}
+.modalMask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.headerPicWrap {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 24rem;
+}
+.headerPicItem {
+  width: 144rem;
+  height: 144rem;
+  margin: 0 36rem 38rem 0;
+  position: relative;
+  cursor: pointer;
+  background-color: #ccc;
+}
+.headerPicItem:nth-of-type(4n) {
+  margin: 0 0 38rem 0;
+}
+.tickWrap {
+  background-color: green;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
