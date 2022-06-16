@@ -1,7 +1,9 @@
 import React from 'react';
+import Image from 'next/image';
 import Header from "../../components/Header";
 import style from './index.module.css';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import startPic from '../../../public/startPic.png'
 
 const Main = function () {
   const router = useRouter();
@@ -15,9 +17,8 @@ const Main = function () {
           <div className={style.startBtn} onClick={() => {
             router.push('/inituser')
           }}>
-            <span>Start</span>
-            <span>图标</span>
-            {/* <img src="" alt="" /> */}
+            <span style={{marginRight: '7.8px'}}>Start</span>
+            <Image src={startPic} alt="startPic"/>
           </div>
         </div>
       </div>

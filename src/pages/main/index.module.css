@@ -40,4 +40,5 @@
   background: linear-gradient(240deg, #5cbbff 12%, #5cbbff 12%, #1a5fe4 85%, #1a5fe4 85%);
   font-size: 24rem;
   color: #ffffff;
+  cursor: pointer;
 }
