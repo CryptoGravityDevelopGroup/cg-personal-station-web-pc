@@ -12,6 +12,9 @@
   align-items: center;
   justify-content: center;
 }
+.stepsComplete {
+  color: #3772ff;
+}
 .stepsName {
   font-size: 16px;
   font-weight: normal;

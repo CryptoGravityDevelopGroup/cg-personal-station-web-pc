@@ -18,7 +18,8 @@ import demo5Pic from '../../../public/demo-5.png';
 import demo6Pic from '../../../public/demo-6.png';
 import demo7Pic from '../../../public/demo-7.png';
 
-export default function Index() {
+export default function Index(props) {
+  const { onNext } = props;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [headerPicIndex, setHeaderPicIndex] = useState(null);
   const headerPicArr = [
@@ -121,7 +122,7 @@ export default function Index() {
           </Form>
           <div className={styles.fromBottom}>
             <div className={'button'} onClick={() => {
-              console.log('Next')
+              onNext();
             }}>Next</div>
           </div>
         </div>

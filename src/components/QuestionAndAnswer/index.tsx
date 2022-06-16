@@ -6,7 +6,8 @@ import style from './index.module.css';
 import deleteBtnPic from '../../../public/delete-btn.png'
 import addBtnPic from '../../../public/add-btn.png'
 
-export default function Index() {
+export default function Index(props) {
+  const { onNext } = props;
   const { TextArea } = Input;
   const [questionList, setQuestionList] = useState([{
     question:'',
@@ -58,7 +59,7 @@ export default function Index() {
         </div>
         
         <div className={'button'} onClick={() => {
-          console.log('Done')
+          onNext()
         }}>Done</div>
       </div>
     </>

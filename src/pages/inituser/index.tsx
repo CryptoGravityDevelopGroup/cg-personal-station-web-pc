@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from "../../components/Header";
 import ConnectWallet from "../../components/ConnectWallet";
 import InitUserSteps from "../../components/InitUserSteps";
@@ -7,21 +7,36 @@ import QuestionAndAnswer from "../../components/QuestionAndAnswer";
 import ProfileDown from "../../components/ProfileDown";
 import style from './index.module.css';
 export default function InitUser() {
+  const [curstep, setCurstep] = useState(1);
   return (
     <div className={style.inituser}>
       <Header/>
-      <InitUserSteps/>
+      <InitUserSteps curstep={curstep} />
       {/* 连接钱包 */}
-      {/* <ConnectWallet/> */}
+      {
+        curstep == 1 && <ConnectWallet onNext={() => {
+          setCurstep(2);
+        }}/>
+      }
 
       {/* 个人简介 */}
-      {/* <Profile/> */}
+      {
+        curstep == 2 && <Profile onNext={() => {
+          setCurstep(3);
+        }}/>
+      }
 
       {/* Q&A */}
-      {/* <QuestionAndAnswer/> */}
+      {
+        curstep == 3 && <QuestionAndAnswer onNext={() => {
+          setCurstep(4);
+        }}/>
+      }
 
       {/* 填写完成 */}
-      <ProfileDown/>
+      {
+        curstep == 4 && <ProfileDown/>
+      }
     </div>
   )
 }
