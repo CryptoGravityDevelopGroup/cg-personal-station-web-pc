@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, Input, Row, Col } from 'antd';
+import SelectedHead from '../SeleteHead'
+
 import "antd/dist/antd.css";
 import styles from './index.module.css';
 import Image from 'next/image';
@@ -7,8 +9,6 @@ import twitterPic from '../../../public/twitter.png';
 import telegramPic from '../../../public/telegram.png';
 import instagramPic from '../../../public/instagram.png';
 import defaultUserPic from '../../../public/default_user.png';
-import closePic from '../../../public/close.png';
-import tickPic from '../../../public/tick.png';
 
 import demo1Pic from '../../../public/demo-1.png';
 import demo2Pic from '../../../public/demo-2.png';
@@ -21,7 +21,6 @@ import demo7Pic from '../../../public/demo-7.png';
 export default function Index(props) {
   const { onNext } = props;
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [headerPicIndex, setHeaderPicIndex] = useState(null);
   const headerPicArr = [
     {
       img:demo1Pic
@@ -47,16 +46,13 @@ export default function Index(props) {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
-  const handleHeaderPicClick = (index) => {
-    setHeaderPicIndex(index);
+  const handleOk = () => {
+    setIsModalVisible(false);
   };
   const showModal = () => {
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
   return (
     <>
       <div className={styles.wrap}>
@@ -127,48 +123,8 @@ export default function Index(props) {
           </div>
         </div>
       </div>
-      {
-        isModalVisible && (
-          <>
-            <div className={styles.modal}>
-              <div className={styles.modalTitleWrap}>
-                <span className={styles.title}>请选择头像</span>
-                <Image className={styles.modalClose} src={closePic} alt="close" onClick={() => {
-                  handleOk();
-                }} />
-              </div>
-              <div className={styles.modalContent}>
-                <div className={styles.headerPicWrap}>
-                  {
-                    headerPicArr.map((item, index) => {
-                      return (
-                        <div key={index} className={styles.headerPicItem} onClick={() => {
-                          handleHeaderPicClick(index);
-                        }}>
-                          <Image layout="fill" src={item.img} alt='headerPic' />
-                          {
-                            index == headerPicIndex && <div className={styles.tickWrap}>
-                              <Image src={tickPic} alt='tickPic'/>
-                            </div>
-                          }
-                        </div>
-                      )
-                    })
-                  }
-                </div>
-              </div>
-              <div className={styles.modalBottom}>
-                <div className={'button'} onClick={() => {
-                  handleOk();
-                }}>Ok</div>
-              </div>
-            </div>
-            <div className={styles.modalMask} onClick={() => {
-              handleOk();
-            }}></div>
-          </>
-        )
-      }
+      {/* 选择头像 */}
+      <SelectedHead headerPicArr={headerPicArr} isModalVisible={isModalVisible} handleOk={handleOk}/>
     </>
   )
 }
