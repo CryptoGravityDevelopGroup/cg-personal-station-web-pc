@@ -4,7 +4,7 @@ import style from './index.module.css';
 import { useRouter } from 'next/router'
 
 const Main = function () {
-  const router = useRouter()
+  const router = useRouter();
   return (
     <div className={style.main}>
       <Header/>
