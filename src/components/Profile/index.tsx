@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, Input, Row, Col } from 'antd';
-import SelectedHead from '../SeleteHead'
+import SelectedHead from '../SeleteHead';
+import SelectedTag from '../SelectedTag';
 
 import "antd/dist/antd.css";
 import styles from './index.module.css';
@@ -83,13 +84,16 @@ export default function Index(props) {
               label="name"
               name="name"
             >
-              <Input />
+              <Input placeholder='Enter your name' />
             </Form.Item>
             <Form.Item
               label="tag"
               name="tag"
             >
-              <Input />
+              {/* 选择头像 */}
+              <div style={{height: '40.1px'}}>
+                <SelectedTag/>
+              </div>
             </Form.Item>
             <Form.Item
               label="about me"
