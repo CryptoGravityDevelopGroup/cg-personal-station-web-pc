@@ -145,7 +145,7 @@ export default function Index(props) {
                         <div key={index} className={styles.headerPicItem} onClick={() => {
                           handleHeaderPicClick(index);
                         }}>
-                          <Image src={item.img} alt='headerPic' />
+                          <Image layout="fill" src={item.img} alt='headerPic' />
                           {
                             index == headerPicIndex && <div className={styles.tickWrap}>
                               <Image src={tickPic} alt='tickPic'/>
