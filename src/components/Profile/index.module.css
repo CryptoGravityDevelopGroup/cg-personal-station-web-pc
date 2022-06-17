@@ -12,6 +12,12 @@
   display: flex;
   align-items: center;
 }
+.userImageWarp {
+  width: 52rem;
+  height: 52rem;
+  border-radius: 28rem;
+  overflow: hidden;
+}
 .userImageUploadBtn {
   display: flex;
   align-items: center;

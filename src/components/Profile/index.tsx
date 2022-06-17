@@ -22,6 +22,7 @@ import demo7Pic from '../../../public/demo-7.png';
 export default function Index(props) {
   const { onNext } = props;
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [userPicIndex, setUserPicIndex] = useState(null)
   const headerPicArr = [
     {
       img:demo1Pic
@@ -47,8 +48,10 @@ export default function Index(props) {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
-  const handleOk = () => {
+  const handleOk = (imgIndex) => {
+    console.log('imgIndex', imgIndex);
     setIsModalVisible(false);
+    setUserPicIndex(imgIndex);
   };
   const showModal = () => {
     setIsModalVisible(true);
@@ -60,7 +63,9 @@ export default function Index(props) {
         <div className={styles.content}>
           <Row className={styles.userIamgeLine}>
             <Col span={5} className={styles.userImage}>
-              <Image src={defaultUserPic} alt={'defaultUserPic'}/>
+              <div className={styles.userImageWarp}>
+                <Image src={userPicIndex == null ? defaultUserPic : headerPicArr[userPicIndex].img} alt={'defaultUserPic'}/>
+              </div>
             </Col>
             <Col span={19} className={styles.userImageUploadBtn}>
               <Button type="primary" ghost size='large' shape='round' onClick={() => {

@@ -12,7 +12,9 @@ export default function Index(props) {
   };
   return (
     <>
-      <Modal visible={isModalVisible} onOk={handleOk}>
+      <Modal visible={isModalVisible} onOk={() => {
+        handleOk(headerPicIndex);
+      }}>
         <div className={styles.headerPicWrap}>
           {
             headerPicArr.map((item, index) => {

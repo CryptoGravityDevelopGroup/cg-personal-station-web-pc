@@ -15,7 +15,6 @@ const App = function () {
     function getRem(pwidth, prem) {
         const html = document.getElementsByTagName("html")[0];
         const oWidth = document.body.clientWidth || document.documentElement.clientWidth;
-        console.log('oWidth', oWidth);
         html.style.fontSize = oWidth / pwidth * prem + "px";
     }
   })
