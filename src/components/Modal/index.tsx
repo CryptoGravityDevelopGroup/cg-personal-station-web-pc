@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import Image from 'next/image';
 import styles from './index.module.css';
 import closePic from '../../../public/close.png';
@@ -9,7 +10,7 @@ export default function Index(props) {
   const handleOk = () => {
     onOk && onOk();
   };
-  return (
+  const modalTemplate =  (
     <>
       {
         visible && (
@@ -38,4 +39,6 @@ export default function Index(props) {
       }
     </>
   )
+
+  return ReactDOM.createPortal(modalTemplate, document.getElementsByTagName('body')[0]);
 }

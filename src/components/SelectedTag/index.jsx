@@ -40,6 +40,7 @@ export default function Index() {
             <div className={styles.newTagNum}>
               <span>{newTagList.length}/3</span>
             </div>
+            <div></div>
           </div>
         </div>
       </Modal>
