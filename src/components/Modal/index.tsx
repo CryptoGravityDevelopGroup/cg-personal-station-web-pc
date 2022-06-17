@@ -4,7 +4,7 @@ import styles from './index.module.css';
 import closePic from '../../../public/close.png';
 
 export default function Index(props) {
-  const { visible, children, onOk } = props;
+  const { visible, children, onOk, title } = props;
   
   const handleOk = () => {
     onOk && onOk();
@@ -16,7 +16,7 @@ export default function Index(props) {
           <>
             <div className={styles.modal}>
               <div className={styles.modalTitleWrap}>
-                <span className={styles.title}>请选择头像</span>
+                <span className={styles.title}>{title}</span>
                 <Image className={styles.modalClose} src={closePic} alt="close" onClick={() => {
                   handleOk();
                 }} />
