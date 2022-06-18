@@ -11,6 +11,13 @@ import ethLogo from '../../../public/eth-logo.png';
 import usdtLogo from '../../../public/usdt-logo.png';
 import rippleLogo from '../../../public/ripple-logo.png';
 import moreBtn from '../../../public/more-btn.png';
+import demo1Pic from '../../../public/demo-1.png';
+import demo2Pic from '../../../public/demo-2.png';
+import demo3Pic from '../../../public/demo-3.png';
+import demo4Pic from '../../../public/demo-4.png';
+import demo5Pic from '../../../public/demo-5.png';
+import demo6Pic from '../../../public/demo-6.png';
+import demo7Pic from '../../../public/demo-7.png';
 
 export default function Index() {
   const tokenList = [
@@ -36,6 +43,33 @@ export default function Index() {
       tokenPrice:'$25,524.54'
     }
   ];
+  const headerPicArr = [
+    {
+      img:demo1Pic,
+      title: 'Community x Community x Community x',
+      price: '2.45'
+    },{
+      img:demo2Pic,
+      title: 'Community x Community x Community x',
+      price: '2.45'
+    },{
+      img:demo3Pic,
+      title: 'Community x Community x Community x',
+      price: '2.45'
+    },{
+      img:demo4Pic,
+      title: 'Community x Community x Community x',
+      price: '2.45'
+    },{
+      img:demo5Pic,
+      title: 'Community x Community x Community x',
+      price: '2.45'
+    },{
+      img:demo6Pic,
+      title: 'Community x Community x Community x',
+      price: '2.45'
+    }
+  ]
   return (
     <div>
       <Header/>
@@ -103,6 +137,38 @@ export default function Index() {
             <Image width={24} height={24} src={moreBtn} alt="moreBtn" />
             <div className={style.showMoreContent}>show more</div>
           </div>
+        </div>
+      </div>
+      <div className={style.nftWrap}>
+        <div className={style.nftDescribe}>
+          <div className={style.nftPlateTitle}>
+            NFT
+          </div>
+          <div className={style.nftDescribeContent}>
+            <div>共持有120个NFT，来自于24个不同项目</div>
+            <div>最早2021年10月31日购买第一个nft，购买NFT共计花费24eth。其中xx、xx、xx项目的nft有着良好的市场表现</div>
+          </div>
+          <div className={style.nftShowMore}>
+            <div className={style.showMoreContent}>show more</div>
+            <Image width={18} height={18} src={moreBtn} alt="moreBtn" />
+          </div>
+        </div>
+        <div className={style.nftList}>
+          {
+            headerPicArr.map((item,index) => {
+              return (
+                <div className={style.nftItem} key={index}>
+                  <div className={style.nftImage}>
+                    <Image src={item.img} alt="NFTImage"/>
+                  </div>
+                  <div className={style.nftInfo}>
+                    <div className={style.nftTitle}>{item.title}</div>
+                    <div className={style.nftPrice}>{item.price} ETH</div>
+                  </div>
+                </div>
+              )
+            })
+          }
         </div>
       </div>
     </div>
