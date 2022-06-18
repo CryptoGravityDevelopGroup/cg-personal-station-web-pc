@@ -13,7 +13,7 @@ export default function Index() {
         <div className={style.title}>搭建完成</div>
         <div className={style.tips}>这是提示这是提示这是提示这是提示这是提示这是提示</div>
         <div className={'button'} onClick={() => {
-          router.push('/');
+          router.push('/profile');
         }}>进入主页</div>
     </div>
   )

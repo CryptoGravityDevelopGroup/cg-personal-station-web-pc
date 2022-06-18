@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import styles from './Header.module.css';
 import Image from 'next/image'
 import logoPic from '../../../public/logo.png';
+import UserPowerManage from '../UserPowerManage';
 
 export default function Header() {
   const router = useRouter();
@@ -12,6 +13,7 @@ export default function Header() {
         <Image className={styles.logoImage} src={logoPic} alt="logo" onClick={() => {
           router.push('/');
         }} />
+        <UserPowerManage/>
       </div>
     </div>
   )

@@ -74,3 +74,32 @@ input[type="text"]:focus.addTagInput {
   cursor: pointer;
   margin-left: 8px;
 }
+.line {
+  height: 1px;
+  border-radius: 1px;
+  background: #e6e8ec;
+  margin: 32px 0;
+}
+.tagsTitle {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 24px;
+  color: #8990a3;
+  margin-bottom: 16px;
+}
+.tagsContent {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tagRecommendItem {
+  height: 32px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #fcfcfd;
+  box-sizing: border-box;
+  border: 1px solid #d8deeb;
+  margin-right: 8px;
+  margin-bottom: 16px;
+  color: #454c66;
+  cursor: pointer;
+}
