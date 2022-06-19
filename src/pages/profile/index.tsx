@@ -171,7 +171,7 @@ export default function Index() {
             <div>最早2021年10月31日购买第一个nft，购买NFT共计花费24eth。其中xx、xx、xx项目的nft有着良好的市场表现</div>
           </div>
           <div className={style.nftShowMore} onClick={() => {
-            router.push('/nftDetail');
+            router.push('/tokenDetail');
           }}>
             <div className={style.showMoreContent}>show more</div>
             <Image width={18} height={18} src={moreBtn} alt="moreBtn" />
