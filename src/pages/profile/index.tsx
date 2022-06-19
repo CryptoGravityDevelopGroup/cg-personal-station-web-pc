@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image';
 import Header from "../../components/Header";
 import style from './index.module.css';
@@ -17,9 +17,26 @@ import demo3Pic from '../../../public/demo-3.png';
 import demo4Pic from '../../../public/demo-4.png';
 import demo5Pic from '../../../public/demo-5.png';
 import demo6Pic from '../../../public/demo-6.png';
-import demo7Pic from '../../../public/demo-7.png';
+import arrowUpPic from '../../../public/arrow-up.png';
+import arrowDownPic from '../../../public/arrow-down.png';
+
 
 export default function Index() {
+  const [QAList, setQAList] = useState([
+    {
+      status: false,
+      question: 'What is graphic design?',
+      answer: "To make your first listing,Design is all around us. It's more than making things pretty. Learn more about what design is and the role it plays in our world today.Design is all around us. It's more than making things pretty. Learn more about what design is and the role it plays in our world today."
+    },{
+      status: false,
+      question: 'Accessibility and inclusion',
+      answer: "To make your first listing,Design is all around us. It's more than making things pretty. Learn more about what design is and the role it plays in our world today.Design is all around us. It's more than making things pretty. Learn more about what design is and the role it plays in our world today."
+    },{
+      status: false,
+      question: 'How to connect wallet',
+      answer: "To make your first listing,Design is all around us. It's more than making things pretty. Learn more about what design is and the role it plays in our world today.Design is all around us. It's more than making things pretty. Learn more about what design is and the role it plays in our world today."
+    }
+  ]);
   const tokenList = [
     {
       tokenLogo: ethLogo,
@@ -70,6 +87,10 @@ export default function Index() {
       price: '2.45'
     }
   ]
+  const handleQuestionClick = (index) =>{
+    QAList[index].status = !QAList[index].status;
+    setQAList([...QAList]);
+  }
   return (
     <div>
       <Header/>
@@ -165,6 +186,46 @@ export default function Index() {
                     <div className={style.nftTitle}>{item.title}</div>
                     <div className={style.nftPrice}>{item.price} ETH</div>
                   </div>
+                </div>
+              )
+            })
+          }
+        </div>
+      </div>
+      <div className={style.QAWrap}>
+        <div className={style.QADescribe}>
+          <div className={style.QATitle}>
+            Q&A
+          </div>
+        </div>
+        <div className={style.QAList}>
+          {
+            QAList.map((item, index) => {
+              return (
+                <div className={style.QAItem} key={index}>
+                  <div className={style.question}>
+                    <div>{item.question}</div>
+                    {
+                      item.status ? (
+                        <div className={style.arrow} onClick={() => {
+                          handleQuestionClick(index);
+                        }}>
+                          <Image src={arrowUpPic} alt='arrowUpPic'/>
+                        </div>
+                      ) : (
+                        <div className={style.arrow} onClick={() => {
+                          handleQuestionClick(index);
+                        }}>
+                          <Image src={arrowDownPic} alt='arrowDownPic'/>
+                        </div>
+                      )
+                    }
+                  </div>
+                  {
+                    item.status ? (
+                      <div className={style.answer}>{item.answer}</div>
+                    ) : ''
+                  }
                 </div>
               )
             })
