@@ -10,7 +10,7 @@ export default function Header(props) {
   const { upmStatus, goHomeBtnStatus } = props; 
   const router = useRouter();
   const goHome = () => {
-    router.push('/');
+    router.push('/profile');
   }
   return (
     <div className={styles.headerWrap}>
