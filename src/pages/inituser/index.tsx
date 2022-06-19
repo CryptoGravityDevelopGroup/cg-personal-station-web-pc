@@ -10,7 +10,7 @@ export default function InitUser() {
   const [curstep, setCurstep] = useState(1);
   return (
     <div className={style.inituser}>
-      <Header/>
+      <Header upmStatus={true} />
       <InitUserSteps curstep={curstep} />
       {/* 连接钱包 */}
       {

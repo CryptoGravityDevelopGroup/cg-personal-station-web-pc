@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Header from "../../components/Header";
 import style from './index.module.css';
@@ -20,8 +21,8 @@ import demo6Pic from '../../../public/demo-6.png';
 import arrowUpPic from '../../../public/arrow-up.png';
 import arrowDownPic from '../../../public/arrow-down.png';
 
-
 export default function Index() {
+  const router = useRouter();
   const [QAList, setQAList] = useState([
     {
       status: false,
@@ -93,7 +94,7 @@ export default function Index() {
   }
   return (
     <div>
-      <Header/>
+      <Header upmStatus={true} />
       <div className={style.profileWrap}>
         <div className={style.userHeadPic}>
           <Image src={userDefaultPic} alt='userDefaultPic' />
@@ -169,7 +170,9 @@ export default function Index() {
             <div>共持有120个NFT，来自于24个不同项目</div>
             <div>最早2021年10月31日购买第一个nft，购买NFT共计花费24eth。其中xx、xx、xx项目的nft有着良好的市场表现</div>
           </div>
-          <div className={style.nftShowMore}>
+          <div className={style.nftShowMore} onClick={() => {
+            router.push('/nftDetail');
+          }}>
             <div className={style.showMoreContent}>show more</div>
             <Image width={18} height={18} src={moreBtn} alt="moreBtn" />
           </div>

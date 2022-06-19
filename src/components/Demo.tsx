@@ -55,7 +55,7 @@ export const Demo = function () {
   const disabled = !triedEager || !!activatingConnector || connected(injected) || connected(walletconnect) || !!error;
   return (
     <>
-      <Header />
+      <Header upmStatus={true} />
       <div>{!!error && <h4 style={{ marginTop: "1rem", marginBottom: "0" }}>{getErrorMessage(error)}</h4>}</div>
       <div className="grid grid-cols-2 gap-2 px-2 py-4">
         <div className="card bordered">

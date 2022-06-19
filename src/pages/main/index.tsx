@@ -9,7 +9,7 @@ const Main = function () {
   const router = useRouter();
   return (
     <div className={style.main}>
-      <Header/>
+      <Header upmStatus={true} />
       <div className={style.content}>
         <div className={style.leftModule}>
           <div className={style.title}>CryptoGravity</div>
