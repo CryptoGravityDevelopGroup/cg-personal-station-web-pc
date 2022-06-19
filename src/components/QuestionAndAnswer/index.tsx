@@ -7,7 +7,7 @@ import deleteBtnPic from '../../../public/delete-btn.png'
 import addBtnPic from '../../../public/add-btn.png'
 
 export default function Index(props) {
-  const { onNext } = props;
+  const { onNext, isShowDoneBtn } = props;
   const { TextArea } = Input;
   const [questionList, setQuestionList] = useState([{
     question:'',
@@ -58,9 +58,13 @@ export default function Index(props) {
           <span className={style.addContent}>add</span>
         </div>
         
-        <div className={'button'} onClick={() => {
-          onNext()
-        }}>Done</div>
+        {
+          isShowDoneBtn == false ? "" : (
+            <div className={'button'} onClick={() => {
+              onNext()
+            }}>Done</div>
+          )
+        }
       </div>
     </>
   )

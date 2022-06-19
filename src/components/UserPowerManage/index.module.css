@@ -12,6 +12,7 @@
   width: 256rem;
   padding: 8rem 16rem;
   border-radius: 5px;
+  z-index: 999;
 }
 .menuItem {
   display: flex;
@@ -32,4 +33,11 @@
   font-size: 16rem;
   font-weight: normal;
   color: #23262f;
+}
+.aqModalContentWarp {
+  padding: 24rem;
+  overflow-y: scroll;
+  max-height: 555rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }

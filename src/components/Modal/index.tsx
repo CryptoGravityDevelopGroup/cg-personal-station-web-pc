@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import Image from 'next/image';
 import styles from './index.module.css';
@@ -39,6 +39,7 @@ export default function Index(props) {
       }
     </>
   )
-
-  return ReactDOM.createPortal(modalTemplate, document.getElementsByTagName('body')[0]);
+  if (typeof window !== 'undefined') {
+    return ReactDOM.createPortal(modalTemplate, document.getElementsByTagName('body')[0]);
+  }
 }
