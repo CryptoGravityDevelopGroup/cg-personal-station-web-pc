@@ -22,7 +22,8 @@ import demo7Pic from '../../../public/demo-7.png';
 export default function Index(props) {
   const { onNext } = props;
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [userPicIndex, setUserPicIndex] = useState(null)
+  const [userPicIndex, setUserPicIndex] = useState(null);
+  const [formdata, setFormdata] = useState({})
   const headerPicArr = [
     {
       img:demo1Pic
@@ -41,17 +42,10 @@ export default function Index(props) {
     }
   ]
   const { TextArea } = Input;
-  const onFinish = (values) => {
-    console.log('Success:', values);
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
-  const handleOk = (imgIndex) => {
-    console.log('imgIndex', imgIndex);
+  const handleHeadImgChange = (imgIndex) => {
     setIsModalVisible(false);
     setUserPicIndex(imgIndex);
+    setFormdata({...formdata, ...{ avatar:  headerPicArr[imgIndex].img}});
   };
   const showModal = () => {
     setIsModalVisible(true);
@@ -79,8 +73,6 @@ export default function Index(props) {
             name="useInfo"
             labelCol={{ span: 5 }}
             wrapperCol={{ span: 19 }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
             autoComplete="off"
             labelAlign="left"
             size="large"
@@ -89,51 +81,64 @@ export default function Index(props) {
               label="name"
               name="name"
             >
-              <Input placeholder='Enter your name' />
+              <Input placeholder='Enter your name' onChange={ (event) => {
+                setFormdata({...formdata, ...{ nickname: event.target.value }});
+              }} />
             </Form.Item>
             <Form.Item
               label="tag"
               name="tag"
             >
-              {/* 选择头像 */}
+              {/* 选择tag */}
               <div style={{height: '40.1px'}}>
-                <SelectedTag/>
+                <SelectedTag onTagChange={(tagsVal) => {
+                  setFormdata({...formdata, ...{ tags: tagsVal }});
+                }}/>
               </div>
             </Form.Item>
             <Form.Item
               label="about me"
               name="about me"
             >
-              <TextArea placeholder="Enter your Info" autoSize={{ minRows: 4, maxRows: 4 }} />
+              <TextArea placeholder="Enter your Info" autoSize={{ minRows: 4, maxRows: 4 }} onChange={(event) => {
+                setFormdata({...formdata, ...{ brief: event.target.value }});
+              }} />
             </Form.Item>
             <Form.Item
               label="Instagram"
               name="Instagram"
             >
-              <Input placeholder="Enter your Instagram id" suffix={<Image src={instagramPic} alt="instagramPic"/>}/>
+              <Input placeholder="Enter your Instagram id" onChange={(event) => {
+                setFormdata({...formdata, ...{ instagramId: event.target.value }});
+              }} suffix={<Image src={instagramPic} alt="instagramPic"/>}/>
             </Form.Item>
             <Form.Item
-              label="Instagram"
-              name="Instagram"
+              label="Twitter"
+              name="Twitter"
             >
-              <Input placeholder="Enter your Twitter id" suffix={<Image src={twitterPic} alt="twitterPic"/>}/>
+              <Input placeholder="Enter your Twitter id" onChange={(event) => {
+                setFormdata({...formdata, ...{ twitterId: event.target.value }});
+              }} suffix={<Image src={twitterPic} alt="twitterPic"/>}/>
             </Form.Item>
             <Form.Item
               label="Telegram"
               name="Telegram"
             >
-              <Input placeholder="Enter your telegram id" suffix={<Image src={telegramPic} alt="telegramPic"/>} />
+              <Input placeholder="Enter your telegram id" onChange={(event) => {
+                setFormdata({...formdata, ...{ telegramId: event.target.value }});
+              }} suffix={<Image src={telegramPic} alt="telegramPic"/>} />
             </Form.Item>
           </Form>
           <div className={styles.fromBottom}>
             <div className={'button'} onClick={() => {
+              console.log('formdata', formdata);
               onNext();
             }}>Next</div>
           </div>
         </div>
       </div>
       {/* 选择头像 */}
-      <SelectedHead headerPicArr={headerPicArr} isModalVisible={isModalVisible} handleOk={handleOk}/>
+      <SelectedHead headerPicArr={headerPicArr} isModalVisible={isModalVisible} handleOk={handleHeadImgChange}/>
     </>
   )
 }

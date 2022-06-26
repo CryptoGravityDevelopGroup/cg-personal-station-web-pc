@@ -8,6 +8,7 @@ import ProfileDown from "../../components/ProfileDown";
 import style from './index.module.css';
 export default function InitUser() {
   const [curstep, setCurstep] = useState(1);
+  const [userInfo, setuserInfo] = useState({});
   
   return (
     <div className={style.inituser}>
@@ -22,8 +23,9 @@ export default function InitUser() {
 
       {/* 个人简介 */}
       {
-        curstep == 2 && <Profile onNext={() => {
-          setCurstep(3);
+        curstep == 2 && <Profile onNext={(obj) => {
+          console.log('obj', obj);
+          // setCurstep(3);
         }}/>
       }
 

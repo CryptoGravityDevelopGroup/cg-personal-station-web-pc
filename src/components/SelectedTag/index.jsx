@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Modal from '../Modal';
 import styles from './index.module.css';
 import addTagPic from '../../../public/add-tag.png';
 import deleteTagPic from '../../../public/delete-tag.png';
-export default function Index() {
+export default function Index(props) {
+  const { onTagChange } = props;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [newTagList, setNewTagList] = useState([]);
   const tagInputRed = useRef();
@@ -28,16 +29,22 @@ export default function Index() {
     newTagList.splice(tagIndex, 1);
     setNewTagList([...newTagList]);
   }
+  useEffect(() => {
+    onTagChange(newTagList);
+  },[newTagList])
   return (
     <>
       <div className={styles.wrap}>
         <div className={styles.tagContent}>
-          <div className={styles.tagItem}>
-            boy
-          </div>
-          <div className={styles.tagItem}>
-            car
-          </div>
+          {
+            newTagList && newTagList.map((item, index) => {
+              return (
+                <div key={index} className={styles.tagItem}>
+                  {item}
+                </div>
+              )
+            })
+          }
         </div>
         <Image className={styles.addTagBtn} src={addTagPic} alt='tagAddPic' onClick={() => {
           setIsModalVisible(true);
