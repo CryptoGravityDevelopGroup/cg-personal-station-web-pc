@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from "../../components/Header";
 import ConnectWallet from "../../components/ConnectWallet";
 import InitUserSteps from "../../components/InitUserSteps";
@@ -8,6 +8,7 @@ import ProfileDown from "../../components/ProfileDown";
 import style from './index.module.css';
 export default function InitUser() {
   const [curstep, setCurstep] = useState(1);
+  
   return (
     <div className={style.inituser}>
       <Header upmStatus={true} />
