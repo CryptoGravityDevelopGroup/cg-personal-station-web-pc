@@ -1,3 +1,4 @@
+// 连接钱包
 export async function connectWallte() {
   if (typeof window.ethereum !== "undefined") {
     //监听钱包切换
@@ -15,5 +16,13 @@ export async function connectWallte() {
     console.log("用户钱包地址:", addr[0]);
   } else {
     console.log("未安装钱包插件！");
+  }
+}
+// 获取钱包地址
+export function getCurAddress() {
+  if (window.ethereum && window.ethereum.selectedAddress) {
+    return window.ethereum.selectedAddress;
+  } else {
+    window.location.pathname = "/";
   }
 }

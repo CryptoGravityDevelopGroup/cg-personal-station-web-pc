@@ -128,6 +128,14 @@ export default function Index(props) {
                 setFormdata({...formdata, ...{ telegramId: event.target.value }});
               }} suffix={<Image src={telegramPic} alt="telegramPic"/>} />
             </Form.Item>
+            <Form.Item
+              label="Email"
+              name="Email"
+            >
+              <Input placeholder="Enter your Email" onChange={(event) => {
+                setFormdata({...formdata, ...{ email: event.target.value }});
+              }} suffix={<Image src={telegramPic} alt="email"/>} />
+            </Form.Item>
           </Form>
           <div className={styles.fromBottom}>
             <div className={'button'} onClick={() => {

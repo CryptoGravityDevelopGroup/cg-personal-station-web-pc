@@ -7,11 +7,16 @@ import QuestionAndAnswer from "../../components/QuestionAndAnswer";
 import ProfileDown from "../../components/ProfileDown";
 import style from './index.module.css';
 import { registerUser } from '../../api/user';
+import { getCurAddress } from '../../utils/tool'
 export default function InitUser() {
   const [curstep, setCurstep] = useState(1);
   const [userInfo, setuserInfo] = useState({});
   const handleRegisterUser = () => {
-    registerUser(userInfo).then(() => {
+    const address = getCurAddress();
+    console.log('address', address);
+    const params = { ...userInfo, "ethAddress": address };
+    params.tags = JSON.stringify(params.tags); 
+    registerUser(params).then(() => {
       setCurstep(4);
     })
   }
@@ -39,7 +44,7 @@ export default function InitUser() {
       {
         curstep == 3 && <QuestionAndAnswer onNext={(obj) => {
           console.log('Q&A', obj);
-          setuserInfo({ ...userInfo, ...obj });
+          setuserInfo({ ...userInfo, 'qa': JSON.stringify(obj) });
           handleRegisterUser();
         }}/>
       }
