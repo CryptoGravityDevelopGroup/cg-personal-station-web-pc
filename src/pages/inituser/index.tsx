@@ -9,7 +9,7 @@ import style from './index.module.css';
 import { registerUser } from '../../api/user';
 import { getCurAddress } from '../../utils/tool'
 export default function InitUser() {
-  const [curstep, setCurstep] = useState(1);
+  const [curstep, setCurstep] = useState(2);
   const [userInfo, setuserInfo] = useState({});
   const handleRegisterUser = () => {
     const address = getCurAddress();

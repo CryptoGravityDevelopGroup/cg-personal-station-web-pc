@@ -8,3 +8,12 @@ export function registerUser(data) {
     data,
   });
 }
+
+export function login(data) {
+  console.log("login", data);
+  return request({
+    url: "/api/user/metamask/login",
+    method: "POST",
+    data,
+  });
+}

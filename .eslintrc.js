@@ -45,6 +45,7 @@ module.exports = {
         devDependencies: ["**/*.test.tsx", "**/*.stories.tsx", "mocks/**/*.ts"],
       },
     ],
+    "@typescript-eslint/no-var-requires": 0,
   },
   overrides: [
     {
