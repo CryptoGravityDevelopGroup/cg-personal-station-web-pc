@@ -6,10 +6,15 @@ import Profile from "../../components/Profile";
 import QuestionAndAnswer from "../../components/QuestionAndAnswer";
 import ProfileDown from "../../components/ProfileDown";
 import style from './index.module.css';
+import { registerUser } from '../../api/user';
 export default function InitUser() {
   const [curstep, setCurstep] = useState(1);
   const [userInfo, setuserInfo] = useState({});
-  
+  const handleRegisterUser = () => {
+    registerUser(userInfo).then(() => {
+      setCurstep(4);
+    })
+  }
   return (
     <div className={style.inituser}>
       <Header upmStatus={true} />
@@ -24,15 +29,18 @@ export default function InitUser() {
       {/* 个人简介 */}
       {
         curstep == 2 && <Profile onNext={(obj) => {
-          console.log('obj', obj);
-          // setCurstep(3);
+          console.log('ProfileObj', obj);
+          setuserInfo({...obj});
+          setCurstep(3);
         }}/>
       }
 
       {/* Q&A */}
       {
-        curstep == 3 && <QuestionAndAnswer onNext={() => {
-          setCurstep(4);
+        curstep == 3 && <QuestionAndAnswer onNext={(obj) => {
+          console.log('Q&A', obj);
+          setuserInfo({ ...userInfo, ...obj });
+          handleRegisterUser();
         }}/>
       }
 

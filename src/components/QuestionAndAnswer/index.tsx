@@ -18,7 +18,6 @@ export default function Index(props) {
     setQuestionList([...questionList]);
   }
   const addQuestion = () => {
-    console.log('addQuestion');
     questionList.push({
       question:'',
       answer:''
@@ -40,11 +39,15 @@ export default function Index(props) {
                 <div className={style.title}>
                   question {index + 1}
                 </div>
-                <Input style={{marginBottom: '24px',}} />
+                <Input style={{marginBottom: '24px',}} onChange={(event) => {
+                  item.question = event.target.value;
+                }}/>
                 <div className={style.title}>
                   answer
                 </div>
-                <TextArea placeholder="Enter your Answer" autoSize={{ minRows: 4, maxRows: 4 }} />
+                <TextArea placeholder="Enter your Answer" autoSize={{ minRows: 4, maxRows: 4 }} onChange={(event) => {
+                  item.answer = event.target.value;
+                }} />
               </div>
             )
           })
@@ -61,7 +64,7 @@ export default function Index(props) {
         {
           isShowDoneBtn == false ? "" : (
             <div className={'button'} onClick={() => {
-              onNext()
+              onNext(questionList);
             }}>Done</div>
           )
         }

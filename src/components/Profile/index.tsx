@@ -132,7 +132,7 @@ export default function Index(props) {
           <div className={styles.fromBottom}>
             <div className={'button'} onClick={() => {
               console.log('formdata', formdata);
-              onNext();
+              onNext(formdata);
             }}>Next</div>
           </div>
         </div>
