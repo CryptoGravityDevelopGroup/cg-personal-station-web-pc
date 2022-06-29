@@ -1,3 +1,8 @@
+import Web3 from "web3";
+
+let web3 = new Web3(Web3.givenProvider);
+// let web3 = new Web3('https://ropsten.infura.io/v3/002d525e2a0f405dbcc3de0c03b7ad30');
+
 // 连接钱包
 export async function connectWallte() {
   if (typeof window.ethereum !== "undefined") {
@@ -25,4 +30,13 @@ export function getCurAddress() {
   } else {
     window.location.pathname = "/";
   }
+}
+// 签名
+export function handleSignMessage(publicAddress, nonce) {
+  return new Promise((resolve, reject) =>
+    web3.eth.sign(web3.utils.keccak256(`I am signing my one-time nonce: ${nonce}`), publicAddress, (err, signature) => {
+      if (err) return reject(err);
+      return resolve({ publicAddress, signature });
+    })
+  );
 }

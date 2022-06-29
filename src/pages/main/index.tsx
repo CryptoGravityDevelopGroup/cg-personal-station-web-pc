@@ -4,31 +4,57 @@ import Header from "../../components/Header";
 import style from './index.module.css';
 import { useRouter } from 'next/router';
 import startPic from '../../../public/startPic.png';
-import { connectWallte } from '../../utils/tool';
-import { login } from '../../api/user';
+import { connectWallte, handleSignMessage } from '../../utils/tool';
+import { login, registerUser } from '../../api/user';
 
 const Main = function () {
   const router = useRouter();
+  const userLogin = (ethNonce, signature) => {
+    login({
+      "ethAddress": window.ethereum.selectedAddress,
+      "message": `I am signing my one-time nonce: ${ethNonce}`, 
+      "signature": signature, 
+    }).then((res) => {
+      console.log(res);
+      const {
+        success
+      } = res.data;
+      console.log('success', success);
+      // 没有注册
+      if(success == false) {
+        router.push('/inituser');
+      }
+      if(success == true) {
+        router.push('/profile');
+      }
+    })
+  }
   const handleStartClick = () => {
-    connectWallte().then(() => {
-      login({
-        "ethAddress": window.ethereum.selectedAddress,
-        "message": 'asd', // ???
-        "signature": 'asd', // ???
-      }).then((res) => {
-        console.log(res);
-        const {
-          success
-        } = res.data;
-        console.log('success', success);
-        // 没有注册
-        if(success == false) {
-          router.push('/inituser');
-        }
-        if(success == true) {
-          router.push('/profile');
+    let ethNonce = null, ethAddress = null;
+    connectWallte().then(async () => {
+      // 判断是不是已经注册过了
+      await registerUser({ email: "unknow", nickname: "unknow", ethAddress: window.ethereum.selectedAddress }).then((res) => {
+        console.log('registerUse-res', res);
+        const { data, success } = res.data;
+        if(success) {
+          ethNonce = data.ethNonce;
+          ethAddress = data.ethAddress;
+          localStorage.setItem('ethNonce', ethNonce);
+          localStorage.setItem('ethAddress', ethAddress);
         }
       })
+      // 没有注册
+      if(ethNonce == null) {
+        router.push('/inituser');
+      } else { // 已经注册
+        handleSignMessage(ethAddress, ethNonce).then((obj) => {
+          console.log('ethAddress', obj.ethAddress);
+          console.log('signature', obj.signature);
+          userLogin(ethNonce, obj.signature);
+          // publicAddress: "0x61b0c9156729d1305aB1f5a59cD21BaEA880045f"
+          // signature: "0x0b2af2c8917715b4a76edcbc1a17b157cffa99adebcccadeb739054c3f7b1fc5227d151937a8636e38ebf81fd5590ffe8c7afe53
+        })
+      }
     });
   }
   return (
