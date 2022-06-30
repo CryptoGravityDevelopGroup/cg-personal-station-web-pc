@@ -34,9 +34,13 @@ export function getCurAddress() {
 // 签名
 export function handleSignMessage(publicAddress, nonce) {
   return new Promise((resolve, reject) =>
-    web3.eth.sign(web3.utils.keccak256(`I am signing my one-time nonce: ${nonce}`), publicAddress, (err, signature) => {
-      if (err) return reject(err);
-      return resolve({ publicAddress, signature });
-    })
+    web3.eth.personal.sign(
+      web3.utils.fromUtf8(`I am signing my one-time nonce: ${nonce}`),
+      publicAddress,
+      (err, signature) => {
+        if (err) return reject(err);
+        return resolve({ publicAddress, signature });
+      }
+    )
   );
 }
