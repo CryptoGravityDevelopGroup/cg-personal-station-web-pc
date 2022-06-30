@@ -17,3 +17,11 @@ export function login(data) {
     data,
   });
 }
+
+// 查看服务态
+export function getStatus() {
+  return request({
+    url: "/api/ping/status",
+    method: "GET",
+  });
+}

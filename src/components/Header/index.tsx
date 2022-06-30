@@ -19,7 +19,7 @@ export default function Header(props) {
           goHome()
         }} />
         <div className={styles.headeLeft}>
-          { upmStatus ? <UserPowerManage/> : ''} 
+          { upmStatus && <UserPowerManage/> } 
           {
             goHomeBtnStatus ? (
               <div className={styles.goHomeBtn} onClick={() => {

@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Header from "../../components/Header";
 import style from './index.module.css';
 import { useRouter } from 'next/router';
 import startPic from '../../../public/startPic.png';
 import { connectWallte, handleSignMessage } from '../../utils/tool';
-import { login, registerUser } from '../../api/user';
+import { login, registerUser, getStatus } from '../../api/user';
 
 const Main = function () {
   const router = useRouter();
+  const [upmStatus, setUpmStatus] = useState(false)
   const userLogin = (ethNonce, signature) => {
     login({
       "ethAddress": window.ethereum.selectedAddress,
@@ -51,15 +52,13 @@ const Main = function () {
           console.log('ethAddress', obj.ethAddress);
           console.log('signature', obj.signature);
           userLogin(ethNonce, obj.signature);
-          // publicAddress: "0x61b0c9156729d1305aB1f5a59cD21BaEA880045f"
-          // signature: "0x0b2af2c8917715b4a76edcbc1a17b157cffa99adebcccadeb739054c3f7b1fc5227d151937a8636e38ebf81fd5590ffe8c7afe53
         })
       }
     });
   }
   return (
     <div className={style.main}>
-      <Header upmStatus={true} />
+      <Header upmStatus={upmStatus} />
       <div className={style.content}>
         <div className={style.leftModule}>
           <div className={style.title}>CryptoGravity</div>
