@@ -5,7 +5,7 @@ import style from './index.module.css';
 import { useRouter } from 'next/router';
 import startPic from '../../../public/startPic.png';
 import { connectWallte, handleSignMessage } from '../../utils/tool';
-import { login, registerUser, getStatus } from '../../api/user';
+import { login, registerUser } from '../../api/user';
 
 const Main = function () {
   const router = useRouter();
