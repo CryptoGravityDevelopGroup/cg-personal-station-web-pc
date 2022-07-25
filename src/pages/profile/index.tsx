@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Header from "../../components/Header";
 import style from './index.module.css';
+import { getUserInfo } from '../../api/user';
 import userDefaultPic from '../../../public/userDefaultPic.png'
 import instagramSolidPic from '../../../public/instagram-solid.png';
 import telegramSolidPic from '../../../public/telegram-solid.png';
@@ -92,6 +93,14 @@ export default function Index() {
     QAList[index].status = !QAList[index].status;
     setQAList([...QAList]);
   }
+  useEffect(() => {
+    getUserInfo({
+      "ethAddress":"0xd8da6bf26964af9d7eed9e03e53415d37aa96045",
+      "tokenType":"nft"
+    }).then((res) => {
+      console.log('res', res);
+    })
+  }, []);
   return (
     <div>
       <Header upmStatus={true} />
