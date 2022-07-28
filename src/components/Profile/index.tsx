@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+/* eslint-disable @next/next/no-img-element */
+import React, { useState,useEffect } from 'react';
 import { Button, Form, Input, Row, Col } from 'antd';
 import SelectedHead from '../SeleteHead';
 import SelectedTag from '../SelectedTag';
+import { getUserInfo } from '../../api/user';
 
 import "antd/dist/antd.css";
 import styles from './index.module.css';
@@ -9,48 +11,41 @@ import Image from 'next/image';
 import twitterPic from '../../../public/twitter.png';
 import telegramPic from '../../../public/telegram.png';
 import instagramPic from '../../../public/instagram.png';
-import defaultUserPic from '../../../public/default_user.png';
-
-import demo1Pic from '../../../public/demo-1.png';
-import demo2Pic from '../../../public/demo-2.png';
-import demo3Pic from '../../../public/demo-3.png';
-import demo4Pic from '../../../public/demo-4.png';
-import demo5Pic from '../../../public/demo-5.png';
-import demo6Pic from '../../../public/demo-6.png';
-import demo7Pic from '../../../public/demo-7.png';
 
 export default function Index(props) {
   const { onNext } = props;
+  const defaultUserPic = './default_user.png';
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [userPicIndex, setUserPicIndex] = useState(null);
-  const [formdata, setFormdata] = useState({})
-  const headerPicArr = [
-    {
-      img:demo1Pic
-    },{
-      img:demo2Pic
-    },{
-      img:demo3Pic
-    },{
-      img:demo4Pic
-    },{
-      img:demo5Pic
-    },{
-      img:demo6Pic
-    },{
-      img:demo7Pic
-    }
-  ]
+  const [formdata, setFormdata] = useState({});
+  const [headerPicArr, setHeaderPicArr] = useState([])
   const { TextArea } = Input;
   const handleHeadImgChange = (imgIndex) => {
     setIsModalVisible(false);
-    setUserPicIndex(imgIndex);
-    setFormdata({...formdata, ...{ avatar:  headerPicArr[imgIndex].img}});
+    if (imgIndex != null) {
+      setUserPicIndex(imgIndex);
+      setFormdata({...formdata, ...{ avatar:  headerPicArr[imgIndex].img}});
+    }
   };
   const showModal = () => {
     setIsModalVisible(true);
   };
-
+  useEffect(() => {
+    getUserInfo({
+      "ethAddress":"0xd8da6bf26964af9d7eed9e03e53415d37aa96045",
+      "tokenType":"nft"
+    }).then((res) => {
+      const response = res.data;
+      if(response.code == 0) {
+        const temp = response.data.token.map(item => {
+          return {
+            img: item.logo
+          }
+        });
+        setHeaderPicArr(temp);
+      }
+    })
+  }, []);
   return (
     <>
       <div className={styles.wrap}>
@@ -58,7 +53,7 @@ export default function Index(props) {
           <Row className={styles.userIamgeLine}>
             <Col span={5} className={styles.userImage}>
               <div className={styles.userImageWarp}>
-                <Image src={userPicIndex == null ? defaultUserPic : headerPicArr[userPicIndex].img} alt={'defaultUserPic'}/>
+                <img className={styles.userImgContent} src={userPicIndex == null ? defaultUserPic : headerPicArr[userPicIndex].img} alt={'defaultUserPic'}/>
               </div>
             </Col>
             <Col span={19} className={styles.userImageUploadBtn}>

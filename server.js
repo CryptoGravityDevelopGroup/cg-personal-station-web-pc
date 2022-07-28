@@ -5,7 +5,7 @@ const next = require("next");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 const devProxy = {
   "/api": {
-    target: "https://207c1p0569.51mypc.cn", // 端口自己配置合适的
+    target: "http://18.144.74.181:26888", // 端口自己配置合适的
     pathRewrite: {
       "^/api": "/",
     },

@@ -1,7 +1,9 @@
 .headerPicWrap {
   display: flex;
   flex-wrap: wrap;
-  padding: 24rem;
+  padding: 24rem 15rem;
+  max-height: 500px;
+  overflow-y: auto;
 }
 .headerPicItem {
   width: 144rem;
@@ -14,6 +16,9 @@
 }
 .headerPicItem:nth-of-type(4n) {
   margin: 0 0 38rem 0;
+}
+.headerPicImg {
+  height: 100%;
 }
 .tickWrap {
   background-color: green;

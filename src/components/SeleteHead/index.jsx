@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+/* eslint-disable @next/next/no-img-element */
+import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './index.module.css';
 import Modal from '../Modal';
@@ -22,7 +23,7 @@ export default function Index(props) {
                 <div key={index} className={styles.headerPicItem} onClick={() => {
                   handleHeaderPicClick(index);
                 }}>
-                  <Image layout="fill" src={item.img} alt='headerPic' />
+                  <img className={styles.headerPicImg} layout="fill" src={`${item.img}`} alt='headerPic' />
                   {
                     index == headerPicIndex && <div className={styles.tickWrap}>
                       <Image src={tickPic} alt='tickPic'/>
